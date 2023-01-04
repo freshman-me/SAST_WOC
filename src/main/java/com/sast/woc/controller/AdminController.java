@@ -1,6 +1,9 @@
 package com.sast.woc.controller;
 
+import com.sast.woc.common.Result;
 import com.sast.woc.entity.User;
+import com.sast.woc.service.AdminService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,17 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
-    //请仿照 User 补充 Admin 的三层架构并完成接口
+    @Autowired
+    private AdminService adminService;
 
     /**
      * 根据用户名删除用户
      * @param userName 用户名
      * @return 删除成功返回 success
      */
-    @RequestMapping("/del_user")
-    public String delUser(String userName) {
-        // todo 补全代码
-        return "success";
+    @GetMapping("/del_user")
+    public Result<String> delUser(String userName) {
+        return adminService.deleteByUserName(userName);
     }
 
     /**
@@ -31,7 +34,7 @@ public class AdminController {
      * @return User
      */
     @GetMapping("/find_user_info")
-    public User findUser(String userName) {
+    public Result<User> findUser(String userName) {
         // todo 补全代码，你需要去掉下面的 null
         return null;
     }

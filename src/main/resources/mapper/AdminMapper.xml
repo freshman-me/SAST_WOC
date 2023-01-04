@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sast.woc.mapper.AdminMapper">
+
+    <resultMap id="userResultMap" type="com.sast.woc.entity.User">
+        <result column="user_name" property="userName" />
+    </resultMap>
+    <delete id="deleteUserByUserName" >
+        delete from user where user_name = #{userName};
+    </delete>
+
+    <select id="selectUserByUserName" resultMap="userResultMap">
+        select * from user where user_name = #{username};
+    </select>
+</mapper>

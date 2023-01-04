@@ -5,10 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-/**
- * @Author xun
- * @create 2022/12/26 14:47
- */
 @Mapper
 @Repository
 public interface UserMapper {
