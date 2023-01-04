@@ -2,7 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sast.woc.mapper.UserMapper">
 
-    <select id="sample" resultType="com.sast.woc.entity.User">
+    <resultMap id="userResultMap" type="com.sast.woc.entity.User">
+        <result column="user_name" property="userName" />
+    </resultMap>
+
+    <select id="sample" resultMap="userResultMap">
         SELECT * FROM `user` WHERE user_name =#{value};
     </select>
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into user (user_name,password,email,role)
+            values (#{userName},#{password},#{email},#{role});
+    </insert>
 </mapper>

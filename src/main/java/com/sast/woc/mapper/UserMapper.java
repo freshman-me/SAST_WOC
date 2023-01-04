@@ -14,4 +14,6 @@ import org.springframework.stereotype.Repository;
 public interface UserMapper {
     // 示例，可以去resources->mapper中查看UserMapper.xml文件的内容。
     User sample(@Param("value") String value);
+
+    void add(User user);
 }

@@ -1,8 +1,10 @@
 package com.sast.woc.controller;
 
+import com.sast.woc.common.Result;
 import com.sast.woc.entity.User;
 import com.sast.woc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -31,15 +33,18 @@ public class UserController {
     }
 
     /**
-     * 完成注册功能
-     * 选做：对密码进行加密
-     * @param user 用户实体类
-     * @return 注册成功返回 success
+     * 注册功能
+     * @param user 收到的
+     * @return
      */
-    @RequestMapping("/register")
-    public String addUser(User user) {
-        // todo 这里需要你补全
-        return "success";
+    @PostMapping("/register")
+    public Result<String> register(User user) {
+        // 将密码进行md5加密
+        String password = user.getPassword();
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
+        user.setPassword(password);
+        user.setRole(0);
+        return userService.addUser(user);
     }
 
     /**
