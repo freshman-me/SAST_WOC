@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
     @Autowired
     private AdminService adminService;
-
     /**
      * 根据用户名删除用户
      * @param userName 用户名
@@ -36,6 +35,6 @@ public class AdminController {
     @GetMapping("/find_user_info")
     public Result<User> findUser(String userName) {
         // todo 补全代码，你需要去掉下面的 null
-        return null;
+        return adminService.getByUserName(userName);
     }
 }
