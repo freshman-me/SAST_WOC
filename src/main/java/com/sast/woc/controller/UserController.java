@@ -34,16 +34,11 @@ public class UserController {
 
     /**
      * 注册功能
-     * @param user 收到的
-     * @return
+     * @param user 收到的用户信息
+     * @return 是否成功
      */
     @PostMapping("/register")
-    public Result<String> register(User user) {
-        // 将密码进行md5加密
-        String password = user.getPassword();
-        password = DigestUtils.md5DigestAsHex(password.getBytes());
-        user.setPassword(password);
-        user.setRole(0);
+    public Result<String> register(@RequestBody User user) {
         return userService.addUser(user);
     }
 

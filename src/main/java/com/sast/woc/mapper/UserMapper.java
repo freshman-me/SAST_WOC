@@ -15,5 +15,9 @@ public interface UserMapper {
     // 示例，可以去resources->mapper中查看UserMapper.xml文件的内容。
     User sample(@Param("value") String value);
 
+    // 根据username搜索用户
+    User selectByUserNameUser(String userName);
+
+    // 添加用户
     void add(User user);
 }

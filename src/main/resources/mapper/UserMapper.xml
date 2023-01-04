@@ -10,6 +10,10 @@
         SELECT * FROM `user` WHERE user_name =#{value};
     </select>
 
+    <select id="selectByUserNameUser" resultMap="userResultMap">
+        select * from user where user_name = #{userName};
+    </select>
+
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
         insert into user (user_name,password,email,role)
             values (#{userName},#{password},#{email},#{role});
