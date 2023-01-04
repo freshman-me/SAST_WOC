@@ -23,15 +23,10 @@ public class UserController {
         this.userService = userService;
     }
 
-    /**
-     * 以下是一个示例，以Get方法请求数据
-     * @param value value
-     * @return User
-     */
     @GetMapping("/sample")
-    public User sample(String value) {
+    public String sample() {
         // 按住 Ctrl 键用鼠标点一下这个方法进里面看看吧。
-        return userService.sample(value);
+        return "OK";
     }
 
     /**
