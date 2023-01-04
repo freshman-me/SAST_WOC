@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.sample(value);
     }
 
+    /**
+     * 添加用户功能
+     * @param user
+     * @return
+     */
     @Override
     public Result<String> addUser(User user) {
         // 查找用户是否存在
@@ -45,5 +50,22 @@ public class UserServiceImpl implements UserService {
         if (id == null)
             return Result.error("未知原因,注册失败");
         return Result.success("注册成功");
+    }
+
+    /**
+     * 根据用户名和密码查找用户
+     * @param username
+     * @param password
+     * @return
+     */
+    @Override
+    public Result<Boolean> selectUser(String username, String password) {
+        if(userMapper.selectByUserNameUser(username) == null)
+            return Result.error("用户名不存在");
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
+        if (userMapper.selectByPasswordUser(password) == null){
+            return Result.error("密码错误,请重新输入");
+        }
+        return Result.success(true);
     }
 }

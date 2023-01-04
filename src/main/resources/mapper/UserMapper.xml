@@ -13,6 +13,9 @@
     <select id="selectByUserNameUser" resultMap="userResultMap">
         select * from user where user_name = #{userName};
     </select>
+    <select id="selectByPasswordUser" resultMap="userResultMap">
+        select * from user where password = #{password};
+    </select>
 
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
         insert into user (user_name,password,email,role)

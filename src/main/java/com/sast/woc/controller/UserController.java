@@ -3,6 +3,7 @@ package com.sast.woc.controller;
 import com.sast.woc.common.Result;
 import com.sast.woc.entity.User;
 import com.sast.woc.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
     private UserService userService;
 
@@ -49,8 +51,9 @@ public class UserController {
      * @return 如果登录成功返回 {@code true}, 否则 {@code false}
      */
     @PostMapping("/login")
-    public Boolean login(@RequestParam(defaultValue = "") String userName, @RequestParam(defaultValue = "") String password) {
-        // todo 这里需要你补全
-        return true;
+    public Result<Boolean> login(@RequestParam(defaultValue = "") String userName, @RequestParam(defaultValue = "") String password) {
+       log.info("username {}",userName);
+       log.info("passowrd {}",password);
+        return userService.selectUser(userName,password);
     }
 }

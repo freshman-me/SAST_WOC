@@ -20,4 +20,7 @@ public interface UserMapper {
 
     // 添加用户
     void add(User user);
+
+    // 根据密码查找用户
+    User selectByPasswordUser(String password);
 }
