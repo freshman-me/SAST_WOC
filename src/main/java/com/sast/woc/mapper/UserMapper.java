@@ -1,9 +1,11 @@
 package com.sast.woc.mapper;
 
-import com.sast.woc.entity.User;
+import com.sast.woc.mapper.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Mapper
 @Repository
@@ -19,4 +21,7 @@ public interface UserMapper {
 
     // 根据密码查找用户
     User selectByPasswordUser(String password);
+
+    // 分页查询
+    List<User> getUsers(@Param("pageNum")Integer pageNum,@Param("pageSize") Integer pageSize);
 }

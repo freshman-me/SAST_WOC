@@ -1,11 +1,13 @@
 package com.sast.woc.service.impl;
 
 import com.sast.woc.common.Result;
-import com.sast.woc.entity.User;
+import com.sast.woc.mapper.entity.User;
 import com.sast.woc.mapper.UserMapper;
 import com.sast.woc.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+
+import java.util.List;
 
 /**
  * @Author xun
@@ -67,5 +69,11 @@ public class UserServiceImpl implements UserService {
             return Result.error("密码错误,请重新输入");
         }
         return Result.success(true);
+    }
+
+    @Override
+    public Result<List<User>> selectByPage(Integer pageNum, Integer pageSize) {
+        List<User> users = userMapper.getUsers(pageNum, pageSize);
+        return Result.success(users);
     }
 }

@@ -1,7 +1,7 @@
 package com.sast.woc.controller;
 
 import com.sast.woc.common.Result;
-import com.sast.woc.entity.User;
+import com.sast.woc.mapper.entity.User;
 import com.sast.woc.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

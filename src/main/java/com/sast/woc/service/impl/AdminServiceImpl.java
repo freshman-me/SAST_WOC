@@ -1,7 +1,7 @@
 package com.sast.woc.service.impl;
 
 import com.sast.woc.common.Result;
-import com.sast.woc.entity.User;
+import com.sast.woc.mapper.entity.User;
 import com.sast.woc.mapper.AdminMapper;
 import com.sast.woc.service.AdminService;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.sast.woc.entity;
+package com.sast.woc.mapper.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
