@@ -1,7 +1,7 @@
 package com.sast.woc.service;
 
 import com.sast.woc.common.Result;
-import com.sast.woc.mapper.entity.User;
+import com.sast.woc.entity.User;
 
 public interface AdminService {
 

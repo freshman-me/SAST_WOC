@@ -1,13 +1,11 @@
 package com.sast.woc.controller;
 
 import com.sast.woc.common.Result;
-import com.sast.woc.mapper.entity.User;
+import com.sast.woc.entity.User;
 import com.sast.woc.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * @Author xun
@@ -47,14 +45,9 @@ public class UserController {
      * @return 如果登录成功返回 {@code true}, 否则 {@code false}
      */
     @PostMapping("/login")
-    public Result<Boolean> login(@RequestParam(defaultValue = "") String userName, @RequestParam(defaultValue = "") String password) {
-       log.info("username {}",userName);
-       log.info("passowrd {}",password);
+    public Result<String> login(@RequestParam(defaultValue = "") String userName, @RequestParam(defaultValue = "") String password) {
         return userService.selectUser(userName,password);
     }
 
-    @GetMapping("/pages")
-    public Result<List<User>> getPages(@RequestParam Integer pageNum,@RequestParam Integer pageSize){
-        return userService.selectByPage(pageNum,pageSize);
-    }
+
 }

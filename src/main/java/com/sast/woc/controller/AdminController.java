@@ -1,12 +1,16 @@
 package com.sast.woc.controller;
 
 import com.sast.woc.common.Result;
-import com.sast.woc.mapper.entity.User;
+import com.sast.woc.entity.User;
 import com.sast.woc.service.AdminService;
+import com.sast.woc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @Author xun
@@ -17,6 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private UserService userService;
     /**
      * 根据用户名删除用户
      * @param userName 用户名
@@ -36,5 +43,10 @@ public class AdminController {
     public Result<User> findUser(String userName) {
         // todo 补全代码，你需要去掉下面的 null
         return adminService.getByUserName(userName);
+    }
+
+    @GetMapping("/pages")
+    public Result<List<User>> getPages(@RequestParam Integer pageNum, @RequestParam Integer pageSize){
+        return userService.selectByPage(pageNum,pageSize);
     }
 }

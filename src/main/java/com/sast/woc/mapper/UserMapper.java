@@ -1,6 +1,6 @@
 package com.sast.woc.mapper;
 
-import com.sast.woc.mapper.entity.User;
+import com.sast.woc.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

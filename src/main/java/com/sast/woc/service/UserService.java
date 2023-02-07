@@ -1,7 +1,7 @@
 package com.sast.woc.service;
 
 import com.sast.woc.common.Result;
-import com.sast.woc.mapper.entity.User;
+import com.sast.woc.entity.User;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface UserService {
     Result<String> addUser(User user);
 
     // 查找用户
-    Result<Boolean> selectUser(String username, String password);
+    Result<String> selectUser(String username, String password);
 
     // 分页查询
     Result<List<User>> selectByPage(Integer pageNum, Integer pageSize);

@@ -1,7 +1,9 @@
 package com.sast.woc.service.impl;
 
+import com.auth0.jwt.JWT;
 import com.sast.woc.common.Result;
-import com.sast.woc.mapper.entity.User;
+import com.sast.woc.entity.User;
+import com.sast.woc.jwt.JwtUtil;
 import com.sast.woc.mapper.UserMapper;
 import com.sast.woc.service.UserService;
 import org.springframework.stereotype.Service;
@@ -61,14 +63,15 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public Result<Boolean> selectUser(String username, String password) {
+    public Result<String> selectUser(String username, String password) {
         if(userMapper.selectByUserNameUser(username) == null)
             return Result.error("用户名不存在");
         password = DigestUtils.md5DigestAsHex(password.getBytes());
         if (userMapper.selectByPasswordUser(password) == null){
             return Result.error("密码错误,请重新输入");
         }
-        return Result.success(true);
+        User user = userMapper.selectByUserNameUser(username);
+        return Result.success(JwtUtil.createToken(user));
     }
 
     @Override
