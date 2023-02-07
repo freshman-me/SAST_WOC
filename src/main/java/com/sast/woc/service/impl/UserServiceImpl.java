@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     @Override
-    public Result<String> selectUser(String username, String password) {
+    public Result<String> selectUser(String username, String password) throws Exception {
         if(userMapper.selectByUserNameUser(username) == null)
             return Result.error("用户名不存在");
         password = DigestUtils.md5DigestAsHex(password.getBytes());

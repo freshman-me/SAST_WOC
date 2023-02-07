@@ -26,7 +26,7 @@ public class JwtUtil {
      * @param user 个人信息
      * @return token
      */
-    public static String createToken(User user){
+    public static String createToken(User user) throws Exception{
         // 现在时间
         Date iatDate = new Date();
 

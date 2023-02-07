@@ -17,7 +17,7 @@ public interface UserService {
     Result<String> addUser(User user);
 
     // 查找用户
-    Result<String> selectUser(String username, String password);
+    Result<String> selectUser(String username, String password) throws Exception;
 
     // 分页查询
     Result<List<User>> selectByPage(Integer pageNum, Integer pageSize);
