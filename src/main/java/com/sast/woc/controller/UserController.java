@@ -45,7 +45,7 @@ public class UserController {
      * @return 如果登录成功返回 {@code true}, 否则 {@code false}
      */
     @PostMapping("/login")
-    public Result<String> login(@RequestParam(defaultValue = "") String userName, @RequestParam(defaultValue = "") String password) {
+    public Result<String> login(@RequestParam(defaultValue = "") String userName, @RequestParam(defaultValue = "") String password) throws Exception {
         return userService.selectUser(userName,password);
     }
 
