@@ -4,7 +4,9 @@ import com.sast.woc.common.Result;
 import com.sast.woc.entity.User;
 import com.sast.woc.service.AdminService;
 import com.sast.woc.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/admin")
+@Slf4j
 public class AdminController {
     @Autowired
     private AdminService adminService;
@@ -46,7 +49,9 @@ public class AdminController {
     }
 
     @GetMapping("/pages")
+    @Cacheable(value = "userCache",key = "#root.methodName")
     public Result<List<User>> getPages(@RequestParam Integer pageNum, @RequestParam Integer pageSize){
+        log.info("使用了数据库~~~~~~~~");
         return userService.selectByPage(pageNum,pageSize);
     }
 }

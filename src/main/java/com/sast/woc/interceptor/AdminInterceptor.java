@@ -17,7 +17,7 @@ public class AdminInterceptor implements HandlerInterceptor {
         String token = request.getHeader("token");
         Map<String, Claim> map = JwtUtil.verifyToken(token);
         Integer isAdmin = map.get("isAdmin").asInt();
-        if (isAdmin == 1){
+        if (isAdmin == 0){
             return true;
         }else {
             PrintWriter writer = response.getWriter();

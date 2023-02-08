@@ -1,10 +1,26 @@
 spring:
-    datasource:
+  cache:
+    redis:
+      time-to-live: 1800000
+  datasource:
       url: jdbc:mysql://127.0.0.1:3306/sast_2022_woc?serverTimezone=UTC
       username: root
       password: root
       driver-class-name: com.mysql.cj.jdbc.NonRegisteringDriver
-  # mysql 的配置
+  # redis 的配置
+  data:
+    redis:
+      host: 192.168.159.131
+      port: 6379
+      password: 210611
+      database: 0
+      jedis:
+        pool:
+          max-active: 8
+          max-wait: 1ms
+          max-idle: 4
+          min-idle: 0
+
 
 
 server:
